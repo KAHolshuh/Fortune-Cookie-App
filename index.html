@@ -1,0 +1,106 @@
+<!DOCTYPE>
+<html>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<head>
+    <title>Fortune Cookie</title>
+
+    <!--- Font --->
+    <link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
+    <!--- Animate.css --->
+    <link rel="stylesheet" href="css/animate.min.css">
+    <!--- Bootstrap css --->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--- jQuery --->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <!--- Bootstrap js --->
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+    <style>
+        .full {
+            background-image: url(img/fortune.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .well {
+            font-family: 'Amatic SC', cursive;
+            font-size: 32px;
+        }
+    </style>
+
+</head>
+
+<body class="full">
+
+
+
+    <div class="container">
+        <div class="col-sm-6 animated slideInRight" style="margin-top:350px;">
+            <div class="well" id="saythis"> Your fortune awaits you! </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="container">
+        <div class="col-sm-6">
+            <button class="btn btn-danger" onclick="GetFortune()">Get Fortune</button>
+            <button class="btn btn-warning" onclick="AddFortune()">Add Fortunes</button>
+            <div id="display"></div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var fortune = [  "You will be immensely happy!",
+                         "Life is like a box of chocolates!",
+                         "Postage will soon increase.",
+                         "A tiny gift is waiting for you at home!",
+                         "You're going to die.",
+                         "You are deeply loved.",
+                         "You will learn a wise, physically painful lesson soon.", ];
+
+
+        var x = 0;
+        var content = "";
+
+
+        function GetFortune() {
+            document.getElementById("saythis").innerHTML = fortune[Math.floor(Math.random() * ((fortune.length) - 0) + 0)];
+        }
+
+
+
+        function AddFortune() {
+            x = 1;
+            if (x == 1) {
+                content += '<form class="form" action="#" method="#" role="form">';
+                content += '<br/><input type="text" name="newFortune" id="newFortune" value="" placeholder="Say something wise..." class="form-control" />';
+                content += '<br/><button onclick="AddToList()">Submit</button>';
+                content += '</form>';
+            }
+
+            document.getElementById("display").innerHTML = content;
+
+        }
+
+        function AddToList() {
+            var val = document.getElementById("newFortune").value;
+
+            fortune.push(val);
+
+        }
+
+        console.log(fortune);
+    </script>
+
+
+
+</body>
+
+</html>
